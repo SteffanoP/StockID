@@ -1,15 +1,15 @@
 #include <SPI.h>
 #include <MFRC522.h>
 
-#define PIN_SDA 3
-#define PIN_RST 4
+#define PIN_SDA D3
+#define PIN_RST D4
 
 MFRC522 mfrc522(PIN_SDA, PIN_RST);   // Create MFRC522 instance.
 
 char constantes[2][12] = {{"FF FF FF FF"},{"56 BB 59 90"}};
 
 void setup() {
-  Serial.begin(9600);   // Inicia a serial
+  Serial.begin(115200);   // Inicia a serial
   SPI.begin();      // Inicia SPI bus
   mfrc522.PCD_Init();   // Inicia MFRC522
   mfrc522.PCD_SetAntennaGain(mfrc522.RxGain_max);  //Set da antena para ganho máximo
