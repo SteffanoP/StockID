@@ -27,9 +27,9 @@ MFRC522 mfrc522(PIN_SDA, PIN_RST);   // Create MFRC522 instance.
 
 //Porta do servidor
 ESP8266WebServer server(80);
-// IPAddress ip(IP_ADDRESS);
-// IPAddress gateway(10,0,0,254);
-// IPAddress subnet(255,255,255,0);
+ IPAddress ip(IP_ADDRESS);
+ IPAddress gateway(10,0,0,254);
+ IPAddress subnet(255,255,255,0);
 
 char constantes[2][12] = {{"FF FF FF FF"},{"56 BB 59 90"}}; //Banco de dados das tags
 int valor = 0;
@@ -127,7 +127,7 @@ void telaInicial() {
           "document.getElementById('leitura_mfrc522').innerHTML = 'ID da Tag: ' + JSON.parse(xmlhttp.responseText).leitura_mfrc522;"
         "}"
       "};"
-      "xmlhttp.open('GET', 'http://10.0.0.101/leitura_mfrc522', true);"
+      "xmlhttp.open('GET', 'http://10.0.0.200/leitura_mfrc522', true);"
       "xmlhttp.send();"
     "}"
   "</script>"
@@ -146,7 +146,7 @@ void setup() {
   mfrc522.PCD_Init();   // Inicia MFRC522
   mfrc522.PCD_SetAntennaGain(mfrc522.RxGain_max);  //Set da antena para ganho máximo
   //Iniciando configs WiFi
-  //WiFi.config(ip, gateway, subnet);
+  WiFi.config(ip, gateway, subnet);
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   Serial.println();
