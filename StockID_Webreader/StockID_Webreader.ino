@@ -10,14 +10,17 @@
 
 //Dados para conexão WiFi
 #ifndef SSID
-#define SSID "Justino                UniFibra"
-#define PASSWORD "SEvERINO586"
+#define SSID "ssid"
+#define PASSWORD "password"
 #endif
 
 #define IP_ADDRESS 10,0,0,200
 
 const char* ssid = SSID;
 const char* password = PASSWORD;
+
+//Portas de feedback da conexão WiFi
+#define PIN_LEDCONEXAO D1
 
 //Portas de configuração do MFRC522
 #define PIN_SDA D3
@@ -99,6 +102,28 @@ void telaInicial() {
   server.send(200, "text/html", html);
 }
 
+void conectando() {
+  digitalWrite(PIN_LEDCONEXAO, HIGH);
+  delay(250);
+  Serial.print(".");
+  digitalWrite(PIN_LEDCONEXAO, LOW);
+  delay(250);
+}
+
+void conectado() {
+  Serial.println();
+  Serial.print("Conectado à: ");
+  Serial.println(ssid);
+  Serial.print("Endereço de IP: ");
+  Serial.println(WiFi.localIP());
+
+  if (MDNS.begin("esp8266")) {
+    Serial.println("MDNS responder started");
+  }
+
+  digitalWrite(PIN_LEDCONEXAO, HIGH);
+}
+
 void setup() {
   Serial.begin(115200);   // Inicia a serial
   SPI.begin();      // Inicia SPI bus
@@ -110,19 +135,12 @@ void setup() {
   WiFi.begin(ssid, password);
   Serial.println();
   //Aguarda conexão WiFi
+  pinMode(PIN_LEDCONEXAO, OUTPUT);
   while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
+    conectando();
   }
-  Serial.println();
-  Serial.print("Conectado à: ");
-  Serial.println(ssid);
-  Serial.print("Endereço de IP: ");
-  Serial.println(WiFi.localIP());
-
-  if (MDNS.begin("esp8266")) {
-    Serial.println("MDNS responder started");
-  }
+  //Conexão WiFi estabelecida
+  conectado();
 
   server.on("/", telaInicial);
 
