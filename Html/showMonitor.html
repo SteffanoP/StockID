@@ -32,6 +32,8 @@
       flex-wrap: wrap;
     }
     .center {
+      display: flex;
+      justify-content: center;
       align-items: center;
     }
     .baseline {
@@ -93,15 +95,14 @@
   </div>
 
   <h1>StockID Monitor</h1>
-  <p id='leitura_mfrc522'>ID da Tag: </p>
 
   <div class="container flex flex-wrap">
     <div class="box">
       <div class="box_name">
         Tag P1
       </div>
-      <div class="box_content">
-
+      <div class="box_content center">
+        <p id='leitura_mfrc522'>Caixa: </p>
       </div>
       <div class="box_footer">
         Endereço
@@ -155,7 +156,7 @@
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == XMLHttpRequest.DONE && xmlhttp.status == 200) {
-        document.getElementById('leitura_mfrc522').innerHTML = 'ID da Tag: ' + JSON.parse(xmlhttp.responseText).leitura_mfrc522;
+        document.getElementById('leitura_mfrc522').innerHTML = 'Caixa: ' + JSON.parse(xmlhttp.responseText).leitura_mfrc522;
       }
     };
     xmlhttp.open('GET', 'http://10.0.0.200/leitura_mfrc522', true);
