@@ -24,7 +24,7 @@ const char* password = PASSWORD;
 
 //Portas de configuração do MFRC522
 #define PIN_SDA D3
-#define PIN_RST D4
+#define PIN_RST D8
 
 MFRC522 mfrc522(PIN_SDA, PIN_RST);   // Create MFRC522 instance.
 
