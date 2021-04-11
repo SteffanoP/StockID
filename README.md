@@ -21,7 +21,7 @@
     <img alt="Issues" src="https://img.shields.io/github/issues/ifpe-open-source/StockID">
   </a>
   <a href="https://github.com/ifpe-open-source/StockID/blob/master/LICENSE" target="_blank">
-    <img alt="License" src="https://img.shields.io/badge/licença-MIT-brightgreen"/>
+    <img alt="License" src="https://img.shields.io/badge/licença-GPL-brightgreen"/>
   </a>
 </p>
 
@@ -51,6 +51,10 @@ Após a sua pull request ser aceita, você pode excluir o seu branch.
 ## Demonstre o seu apoio
 
 Dê uma ⭐️ se este projeto lhe ajudou!
+
+## 📝 Licença
+
+Este projeto está sob a licença GPL. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ***
 Feito com ♥ por Steffano Pereira :wave: [Entre em contato!](mailto:steffanoxpereira@gmail.com) no [<img src="https://github.com/ifpe-open-source.png" width="15px"/> IFPE Open Source](https://ifpeopensource.com.br)
