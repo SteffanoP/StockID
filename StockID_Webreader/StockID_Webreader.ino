@@ -24,9 +24,9 @@ const char* password = PASSWORD;
 
 //Portas de configuração do MFRC522
 #define PIN_SDA D3
-#define PIN_RST D8
+#define PIN_RST D9
 
-MFRC522 mfrc522(PIN_SDA, PIN_RST);   // Create MFRC522 instance.
+MFRC522 mfrc522(PIN_SDA);   // Create MFRC522 instance.
 
 //Porta do servidor
 ESP8266WebServer server(80);
